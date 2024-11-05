@@ -1,10 +1,20 @@
-pipeline {
+pipeline {]
     agent any
 
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/hamza46awais/lbg-vat-calculator.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                sh "npm install"
+            }
+        }
+        stage('Test') {
+            steps {
+                sh "npm test"
             }
         }
         stage('SonarQube Analysis') {
